@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping 
+			PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.sanqing.po.Subject1" table="tb_subject1"><!-- 每个class对应一个持久化对象 -->
+		<id name="subject1ID"><!-- id元素用来定义主键标识,并指定主键生成策略 -->
+			<generator class="identity"></generator>
+		</id>
+		<property name="subject1Title"></property>	
+		<property name="subject1Parse"></property>	
+		<property name="author"></property>	
+		<property name="subject1_time"></property>	
+	</class>	
+</hibernate-mapping>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?><!-- XML声明 -->
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+ "http://struts.apache.org/dtds/struts-2.1.dtd"><!-- 指定Struts 2配置文件的DTD信息 -->
+	
+<struts><!-- 根节点 -->
+	<constant name="struts.i18n.encoding" value="gb2312"></constant>
+	<package name="struts2" extends="struts-default">
+ 		<action name="login" class="com.sanqing.action.LoginAction">
+ 		    <result name="userSuccess" type="redirect">/user/index1.jsp</result><!--进入用户主页面-->
+			<result name="adminSuccess" type="redirect">/admin/index1.jsp</result><!--进入管理员主页面-->
+ 			<result name="input">/login.jsp</result><!--登录失败，留在登录页面-->
+ 		</action>
+ 		
+ 		<action name="commentAdd" class="com.sanqing.action.CommentAddAction">
+ 			<result name="success" >/user/index_specifid_subject1.jsp</result>
+ 		</action>
+ 		
+ 		<action name="subject1Add" class="com.sanqing.action.Subject1AddAction">
+ 			<result name="success">/user/subject1Add.jsp</result>
+ 			<result name="input">/user/subject1Add.jsp</result>
+ 		</action>
+ 		
+ 		
+ 		<action name="subject1Delete" class="com.sanqing.action.Subject1DeleteAction">
+ 			<result name="adminSuccess" type="chain">
+				<param name="actionName">subject1Query</param>
+			</result>
+			<result name="userSuccess" type="chain">
+				<param name="actionName">self_subject1Query</param>
+			</result>
+ 		</action>
+ 		
+ 		<action name="subject1Query" class="com.sanqing.action.QuerySubject1Action">
+ 			<result name="userSuccess">/user/subject1Manage.jsp</result>
+ 			<result name="adminSuccess">/admin/subject1Manage.jsp</result>
+ 		</action>
+ 		
+ 		<action name="subjectQuery" class="com.sanqing.action.QuerySubjectAction">
+ 			<result name="Success">/admin/subjectManage.jsp</result>
+ 		</action>
+ 		
+ 		<action name="userQuery" class="com.sanqing.action.QueryUserAction">
+ 			<result name="adminSuccess">/admin/userManage.jsp</result>
+ 		</action>
+ 		
+ 		<action name="userQueryFront" class="com.sanqing.action.QueryUserFrontAction">
+ 			<result name="Success">/admin/userFront.jsp</result>
+ 		</action>
+ 		
+ 		<action name="self_subject1Query" class="com.sanqing.action.QuerySelfSubject1Action">
+ 			<result name="success">/user/self_subject1Manage.jsp</result>
+ 		</action>
+ 		 			 		
+ 		<action name="subject1Particular" class="com.sanqing.action.Subject1ParticularAction">
+ 			<result name="userSuccess">/user/subject1Show.jsp</result>
+ 			<result name="adminSuccess">/admin/subject1Show.jsp</result>
+ 		</action>
+ 		
+ 		<action name="subjectParticular" class="com.sanqing.action.SubjectParticularAction">
+ 			<result name="Success">/admin/subject1Show.jsp</result>
+ 		</action>
+ 				
+ 		
+ 		<action name="subject1LikeQuery" class="com.sanqing.action.LikeQuerySubject1Action">
+ 			<result name="userSuccess">/user/subject1Manage.jsp</result>
+ 			<result name="adminSuccess">/admin/subject1Manage.jsp</result>
+ 		</action>
+ 		
+ 		<action name="queryUserByID" class="com.sanqing.action.QueryUserByID">
+ 			<result name="success">/admin/userManage.jsp</result>
+ 		</action>
+ 		
+ 		<action name="queryUserByName" class="com.sanqing.action.QueryUserByName">
+ 			<result name="success">/admin/userManage.jsp</result>
+ 		</action>
+ 		
+ 		<action name="userDelete" class="com.sanqing.action.UserDeleteAction">
+ 			<result name="success" type="chain">
+				<param name="actionName">userQuery</param>
+			</result>
+ 		</action>
+ 		
+ 		<action name="register" class="com.sanqing.action.RegisterAction">
+ 			<result name="registerSuccess" type="redirect">/user/register_success.jsp</result><!--重定向到注册成功页面-->
+ 			<result name="input">/user/register_fail.jsp</result><!--注册失败页面-->
+ 		</action>
+ 		
+ 		<action name="adminCountManagement" class="com.sanqing.action.AdminCountManagementAction">
+ 			<result name="adminUpdateSuccess">/password_update_success.jsp</result><!--跳转到登录页面-->
+ 			<result name="input">/admin/adminCountManagement.jsp</result><!--注册失败页面-->
+ 		</action>
+ 		<action name="userCountManagement" class="com.sanqing.action.UserCountManagementAction">
+ 			<result name="userUpdateSuccess">/password_update_success.jsp</result><!--跳转到登录页面-->
+ 			<result name="input">/user/userCountManagement.jsp</result><!--注册失败页面-->
+ 		</action>
+ 		
+ 		
+ 		<action name="getRandomSubject1" class="com.sanqing.action.GetRandomSubject1">
+ 			<result name="userSuccess" >/user/index_sub1.jsp</result>
+ 			<result name="adminSuccess" >/admin/index_sub1.jsp</result>
+ 		</action>
+ 		
+ 		<action name="ImgUpload" class="com.home.ImgUploadAction" method="imgUpload">
+		</action>
+ 	</package>	
+</struts>
